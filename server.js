@@ -21,7 +21,7 @@ io.on("connection", (socket) => {
         socket.join(newUser.room);
 
         // Emit welcome message when user first joins room
-        socket.emit("welcomeMsg", {
+        socket.emit("message", {
             userId: newUser.id,
             username: newUser.username,
             message: `Welcome ${newUser.username} to ${room}!`,
@@ -37,11 +37,25 @@ io.on("connection", (socket) => {
 
     // User sends chat message
     socket.on("chat", (message) => {
+        const user = getCurrentUser(socket.id);
 
+        io.to(user.room).emit("message", {
+            userId: user.id,
+            username: user.username,
+            message: message
+        });
     });
 
     // User leaves room
     socket.on("disconnect", () => {
+        const user = userLeave(socket.id);
 
+        if (user) {
+            io.to(user.room).emit("message", {
+                userId: user.id,
+                username: user.username,
+                message: `${user.username} has left the chat`,
+            });
+        };
     });
-})
+});
