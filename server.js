@@ -1,5 +1,4 @@
 const express = require("express");
-const socket = require("socket.io");
 const color = require("colors");
 const { getCurrentUser, userJoin, userLeave } = require('./users');
 
@@ -7,11 +6,14 @@ const app = express();
 
 require('dotenv').config();
 
-
 const port = 8000;
 const server = app.listen(port, console.log(`Server is running in ${process.env.NODE_ENV} on port ${process.env.PORT} `.yellow.bold));
 
-const io = socket(server);
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*',
+    }
+});
 
 io.on("connection", (socket) => {
     // New user joins a room 
