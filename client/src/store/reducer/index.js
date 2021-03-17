@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-// import { ProcessReducer } from './process';
+import { ProcessReducer } from './process';
 
 const rootReducers = combineReducers({
     ProcessReducer: ProcessReducer,
