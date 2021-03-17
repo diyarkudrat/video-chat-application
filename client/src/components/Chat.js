@@ -29,6 +29,16 @@ function Chat({ socket, username, room }) {
         });
     }, [socket]);
 
+    const sendData = () => {
+        if (text !== '') {
+            const msg = txtEncrypt(text);
+
+            socket.emit("chat", msg);
+
+            setText("");
+        }
+    };
+
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -38,8 +48,43 @@ function Chat({ socket, username, room }) {
     useEffect(scrollToBottom, "mess");
 
     return (
-        <div>
-            
+        <div className="chat">
+            <div className="username">
+                <h2>{username} in {room}</h2>
+            </div>
+            <div className="chat-message">
+                {messages.map((data) => {
+                    if (data.username === username) {
+                        return (
+                            <div className="message">
+                                <p>{data.message}</p>
+                                <p>{data.username}</p>
+                            </div>
+                        );
+                    } else {
+                        return (
+                            <div className="message msg-right">
+                                <p>{data.message}</p>
+                                <p>{data.username}</p>
+                            </div>
+                        );
+                    }
+                })}
+                <div ref={messagesEndRef} />
+            </div>
+            <div className="send">
+                <input
+                  placeholder="Enter Message"
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
+                  onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                          sendData();
+                      }
+                  }}
+                />
+                <button onClick={sendData}>Send</button>
+            </div>
         </div>
     );
 }
