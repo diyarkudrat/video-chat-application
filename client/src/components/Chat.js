@@ -57,14 +57,14 @@ function Chat({ socket, username, room }) {
                         return (
                             <div className="message">
                                 <p>{data.message}</p>
-                                <p>{data.username}</p>
+                                <span>{data.username}</span>
                             </div>
                         );
                     } else {
                         return (
                             <div className="message msg-right">
                                 <p>{data.message}</p>
-                                <p>{data.username}</p>
+                                <span>{data.username}</span>
                             </div>
                         );
                     }
