@@ -1,0 +1,36 @@
+.homepage {
+    width: 400px;
+    height: 400px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    justify-content: space-evenly;
+    border-radius: 30px;
+}
+
+.homepage h1 {
+    text-align: center;
+}
+
+.homepage input {
+    height: 50px;
+    width: 80%;
+    border-radius: 20px;
+    text-decoration: none;
+    border: none;
+    padding-left: 1rem;
+}
+
+.homepage button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    width: 100px;
+    border: none;
+    border-radius: 30px;
+    background-color: navy;
+}
+
+.homepage button:hover {
+    cursor: pointer;
+}

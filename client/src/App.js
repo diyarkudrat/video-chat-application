@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import './App.css';
 import Home from './components/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import io from 'socket.io-client';
