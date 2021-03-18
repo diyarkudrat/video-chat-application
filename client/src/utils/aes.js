@@ -3,7 +3,7 @@ const aes256 = require('aes256');
 const key = "jodfwlkdnw24nklds08jdsfwjo02lksnfl815w";
 
 export const txtEncrypt = (text) => {
-    const encrypted = aes256.encrypt(text, key);
+    const encrypted = aes256.encrypt(key, text);
 
     return encrypted;
 };

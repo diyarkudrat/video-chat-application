@@ -18,7 +18,6 @@ function Chat({ socket, username, room }) {
         socket.on("message", (data) => {
             const msg = txtDecrypt(data.message, data.username);
             dispatchProcess(false, msg, data.message);
-
             let temp = messages;
             temp.push({
                 userId: data.userId,
