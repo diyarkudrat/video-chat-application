@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import './App.css';
 import Home from './components/Home';
+import Chat from './components/Chat';
+import Video from './components/Video';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import io from 'socket.io-client';
-import Chat from './components/Chat';
 const ENDPOINT = "http://localhost:8000";
 const socket = io(ENDPOINT);
 
@@ -13,13 +14,18 @@ function MainChat(props) {
     <Fragment>
       <div className="right">
         <Chat 
+          userId={props.match.params.userId}
           username={props.match.params.username} 
           room={props.match.params.room} 
           socket={socket} 
         />
       </div>
       <div className="left">
-
+        <Video 
+          username={props.match.params.username} 
+          room={props.match.params.room} 
+          socket={socket}
+        />
       </div>
     </Fragment>
   )
