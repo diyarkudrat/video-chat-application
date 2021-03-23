@@ -13,6 +13,10 @@ const getCurrentUser = (id) => {
     return currUser;
 }
 
+const getAllUsers = () => {
+    return users;
+}
+
 const userLeave = (id) => {
     const idx = users.findIndex((user) => user.id === id);
 
@@ -26,5 +30,6 @@ const userLeave = (id) => {
 module.exports = {
     userJoin,
     getCurrentUser,
+    getAllUsers,
     userLeave
 }

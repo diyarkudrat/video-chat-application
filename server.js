@@ -1,6 +1,6 @@
 const express = require("express");
 const color = require("colors");
-const { getCurrentUser, userJoin, userLeave } = require('./users');
+const { getCurrentUser, userJoin, userLeave, getAllUsers } = require('./users');
 
 const app = express();
 
@@ -19,6 +19,7 @@ io.on("connection", (socket) => {
     // New user joins a room 
     socket.on("join", ({ username, room }) => {
         const newUser = userJoin(socket.id, username, room);
+        const allUsers = getAllUsers();
 
         socket.join(newUser.room);
 
@@ -28,6 +29,8 @@ io.on("connection", (socket) => {
             username: newUser.username,
             message: `Welcome ${newUser.username} to ${room}!`,
         });
+
+        socket.emit('allUsers', allUsers);
 
         // Alert other users in room that a new user has joined
         socket.broadcast.to(newUser.room).emit("message", {
@@ -60,4 +63,12 @@ io.on("connection", (socket) => {
             });
         };
     });
+
+    socket.on("callUser", (data) => {
+        io.to(data.userToCall).emit('hey', { signal: data.signalData, from: data.from });
+    })
+
+    socket.on("acceptCall", (data) => {
+        io.to(data.to).emit('callAccepted', data.signal);
+    })
 });
