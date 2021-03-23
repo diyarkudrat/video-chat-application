@@ -11,7 +11,7 @@ function Display(props) {
     return (
         <div className="main">
             <h4>
-                Secret Key : 
+                Secret Key : <span>jodfwlkdnw24nklds08jdsfwjo02lksnfl815w</span>
             </h4>
             <div className="incoming">
                 <h3>Incoming Data</h3>
