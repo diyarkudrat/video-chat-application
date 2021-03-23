@@ -20,7 +20,7 @@
     padding-bottom: 1rem;
 }
 
-.chat .chat-message {
+.chat-message {
     height: 70%;
     overflow-y: auto;
     overflow: scroll;
@@ -33,6 +33,7 @@
 .chat-message .message {
     margin-left: 0px;
     max-width: 220px;
+    padding-left: 0.5rem;
 }
 
 .chat-message p {
@@ -52,7 +53,7 @@
 }
 
 .msg-right {
-    margin-right: 0px;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     max-width: 220px;
