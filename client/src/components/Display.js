@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import './styles/display.css';
 
 
 function Display(props) {
@@ -18,7 +19,7 @@ function Display(props) {
             </div>
             <div className="decrypt">
                 <h3>Decrypted Data</h3>
-                <p>{state.text}</p>
+                <p>{state.message}</p>
             </div>
         </div>
     );
