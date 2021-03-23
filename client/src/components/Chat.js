@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { process } from '../store/action/index';
 import { txtEncrypt, txtDecrypt } from '../utils/aes';
-import './styles/chat.css';
+import './styles/chat.scss';
 
 
 function Chat({ socket, username, room }) {

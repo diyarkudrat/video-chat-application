@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import './styles/display.css';
+import './styles/display.scss';
 import Lottie from 'react-lottie';
 import animationData from "../loading.json";
 

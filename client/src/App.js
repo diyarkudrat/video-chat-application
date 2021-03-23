@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import './App.css';
+import './App.scss';
 import Home from './components/Home';
 import Display from './components/Display';
 import Chat from './components/Chat';
