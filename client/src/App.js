@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import './App.css';
 import Home from './components/Home';
+import Display from './components/Display';
+import Chat from './components/Chat';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import io from 'socket.io-client';
-import Chat from './components/Chat';
 const ENDPOINT = "http://localhost:8000";
 const socket = io(ENDPOINT);
 
@@ -19,7 +20,7 @@ function MainChat(props) {
         />
       </div>
       <div className="left">
-
+        <Display />
       </div>
     </Fragment>
   )
