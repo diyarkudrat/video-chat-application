@@ -21,11 +21,11 @@ function MainChat(props) {
         />
       </div>
       <div className="left">
-        <Video 
+        {/* <Video 
           username={props.match.params.username} 
           room={props.match.params.room} 
           socket={socket}
-        />
+        /> */}
       </div>
     </Fragment>
   )
